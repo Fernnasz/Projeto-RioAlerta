@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Tipos de Alerta</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../CSS/style.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;1,300;1,400&display=swap');
+</style>
+</head>
+<body>
+ 
+<!--Barra de Navegação e modo escuro-->
+  <nav>
+    <div class="nav-bar">
+        <i class='bx bx-menu sidebarOpen' ></i>
+        <span class="logo navLogo"><a href="#">Rio Alerta</a></span>
+
+        <div class="menu">
+            <div class="logo-toggle">
+                <span class="logo"><a href="#">Rio Alerta</a></span>
+                <i class='bx bx-x siderbarClose'></i>
+            </div>
+
+            <ul class="nav-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="../php/noticia.php">Notícias</a></li>
+              <li><a href="tipoAlerta.html">Tipos de Alerta</a></li>
+              <li><a href="../php/formulario.php">Cadastro</a></li>
+            </ul>
+        </div>
+
+        <div class="darkLight-searchBox">
+            <div class="dark-light">
+                <i class='bx bx-moon moon'></i>
+                <i class='bx bx-sun sun'></i>
+            </div>
+
+            <div class="searchBox">
+               <div class="searchToggle">
+                <i class='bx bx-x cancel'></i>
+                <i class='bx bx-search search'></i>
+               </div>
+
+                <div class="search-field">
+                    <input type="text" placeholder="Search...">
+                    <i class='bx bx-search'></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+
+const body = document.querySelector("body"),
+  nav = document.querySelector("nav"),
+  modeToggle = document.querySelector(".dark-light"),
+  searchToggle = document.querySelector(".searchToggle"),
+  sidebarOpen = document.querySelector(".sidebarOpen"),
+  siderbarClose = document.querySelector(".siderbarClose");
+
+  let getMode = localStorage.getItem("mode");
+      if(getMode && getMode === "dark-mode"){
+        body.classList.add("dark");
+      }
+
+// js code to toggle dark and light mode
+  modeToggle.addEventListener("click" , () =>{
+    modeToggle.classList.toggle("active");
+    body.classList.toggle("dark");
+
+    // js code to keep user selected mode even page refresh or file reopen
+    if(!body.classList.contains("dark")){
+        localStorage.setItem("mode" , "light-mode");
+    }else{
+        localStorage.setItem("mode" , "dark-mode");
+    }
+  });
+
+// js code to toggle search box
+    searchToggle.addEventListener("click" , () =>{
+    searchToggle.classList.toggle("active");
+  });
+
+  
+//   js code to toggle sidebar
+sidebarOpen.addEventListener("click" , () =>{
+nav.classList.add("active");
+});
+
+body.addEventListener("click" , e =>{
+let clickedElm = e.target;
+
+if(!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")){
+    nav.classList.remove("active");
+}
+});
+
+
+
+</script>
+<br>
+<br>
+<!--Slide-->
+<section class="wrapper">
+  <div class="slider">
+      <div class="card active">
+          <img src="../IMAGENS/Alerta Verde - Nv1_Moment.jpg" width="200px" alt="">
+          <div class="title">
+            <h2>Vigilância</h2>
+            <p>Sem indícios de Ventos</p>
+          </div>
+      </div>
+      <div class="card ">
+          <img src="../IMAGENS/Alerta Amarelo - Nv2_Moment.jpg" width="200px" alt="">
+          <div class="title">
+            <h2>Observação</h2>
+            <p>Há previsão de pancadas de chuvas pelas proximas horas.</p>
+          </div>
+      </div>
+      <div class="card ">
+          <img src="../IMAGENS/Alerta Amarelo Escuro - Nv3_Moment.jpg" width="200px" alt="">
+          <div class="title">
+            <h2>Atenção</h2>
+            <p>Risco Moderado para alagamentos, deslizamentos e inundação.</p>
+          </div>
+      </div>
+      <div class="card ">
+          <img src="../IMAGENS/Alerta Laranja - Nv4_Moment.jpg" width="200px" alt="">
+          <div class="title">
+            <h2>Alerta</h2>
+            <p>Risco Alto para alagamentos, deslizamentos e inundação</p>
+          </div>
+      </div>
+      <div class="card ">
+          <img src="../IMAGENS/Alerta Vermelho - Nv5_Moment.jpg" width="200px" alt="">
+          <div class="title">
+            <h2>Alerta Máximo</h2>
+            <p>Risco Muito Alto para alagamentos, deslizamentos e inundação</p>
+          </div>
+      </div>
+      <div class="card ">
+        <img src="../IMAGENS/Alerta Roxo - Nv6_Moment.jpg" width="200px" alt="">
+        <div class="title">
+          <h2>Crise</h2>
+          <p>Não sai de casa</p>
+        </div>
+    </div>
+    
+     </div>
+  </div>
+</section>
+<script>
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+        cards.forEach(c => {
+            if(c !== card){
+                c.classList.remove('active');
+            }
+        });
+
+        card.classList.add('active');
+    });
+});
+
+</script>
+<div class="bigbox-alerta">
+
+    <div class="box-alerta">
+        <div class="alerta verde">
+            <h1 class="titulo-alerta"> Estado de Vigilância</h1>
+            <div class="video-alerta">
+                 <video   width="280" height="400" controls src="../IMAGENS/Alerta Verde - Nv1.mp4"></video>
+            </div>
+            <p id="verde"class="paragrafo-alerta">Não há previsão de ventos para Nova Iguaçu e Região.</p>
+        </div>
+
+        <div class="alerta amarelo">
+            <h1 class="titulo-alerta"> Estado de Observação</h1>
+            <div class="video-alerta">
+                 <video   width="280" height="400" controls src="../IMAGENS/Alerta Amarelo - Nv2.mp4"></video>
+            </div>
+            <p id="amarelo" class="paragrafo-alerta">Há previsão de pancadas de chuvas pelas proximas horas para Nova Iguaçu e Região.</p>
+        </div>
+        <div class="alerta amarelo-escuro">
+            <h1 class="titulo-alerta"> Estado de Atenção</h1>
+            <div class="video-alerta">
+                 <video   width="280" height="400" controls src="../IMAGENS/Alerta Amarelo Escuro - Nv3.mp4"></video>
+            </div>
+            <p id="amarelo-escuro" class="paragrafo-alerta">Risco Moderado para alagamentos, deslizamentos e inundação para Nova Iguaçu e Região.</p>
+        </div>
+        <div class="alerta laranja"> 
+            <h1 class="titulo-alerta"> Estado de Alerta</h1>
+            <div class="video-alerta">
+                 <video   width="280" height="400" controls src="../IMAGENS/Alerta Laranja - Nv4.mp4"></video>
+            </div>
+            <p  id="laranja" class="paragrafo-alerta">Risco Alto para alagamentos, deslizamentos e inundação para Nova Iguaçu e Região.</p>
+        </div>
+        <div class="alerta vermelho"> 
+            <h1 class="titulo-alerta"> Estado de Alerta Máximo</h1>
+            <div class="video-alerta">
+                 <video   width="280" height="400" controls src="../IMAGENS/Alerta Vermelho - Nv5.mp4"></video>
+            </div>
+            <p id="vermelho" class="paragrafo-alerta">Risco Muito Alto para alagamentos, deslizamentos e inundação para Nova Iguaçu e Região.</p>
+        </div>
+        <div class="alerta roxo">
+            <h1 class="titulo-alerta"> Estado de Crise</h1>
+            <div class="video-alerta">
+                 <video   width="280" height="400" controls src="../IMAGENS/Alerta Roxo - Nv6.mp4"></video>
+            </div>
+            <p  id="roxo" class="paragrafo-alerta">Não sai de casa.</p>
+        </div>
+        
+
+    </div>
+
+
+</div>
+<br>
+<br>
+
+<!--Footer-->
+<footer>
+  <div class="conteiner-footer">
+        <div class="text-footer">
+          <p>© 2023 Rio Alerta - Rio de Janeiro. DLN - Inovação e Eficiência</p>
+        </div>
+  </div>
+
+<script>
+  const closeBtn = document.querySelector(".close-btn");
+
+  closeBtn.addEventListener("click", () => {
+    closeBtn.classList.toggle("open");
+  });
+</script>
+</footer>
+<script src="../php/jquery.js"></script>
+<script src="../php/script.js"></script>
+<script src="../php/html5shiv.js"></script>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>  
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+            crossorigin="anonymous"></script>   
+</body>
+</html>

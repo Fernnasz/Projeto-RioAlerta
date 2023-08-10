@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../CSS/style.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;1,300;1,400&display=swap');
+</style>
+</head>
+<body>
+ 
+<!--Barra de Navegação e modo escuro-->
+  <nav>
+    <div class="nav-bar">
+        <i class='bx bx-menu sidebarOpen' ></i>
+        <span class="logo navLogo"><a href="#">Rio Alerta</a></span>
+
+        <div class="menu">
+            <div class="logo-toggle">
+                <span class="logo"><a href="#">Rio Alerta</a></span>
+                <i class='bx bx-x siderbarClose'></i>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="../php/noticia.php">Notícias</a></li>
+                <li><a href="tipoAlerta.html">Tipos de Alerta</a></li>
+                <li><a href="../php/formulario.php">Cadastro</a></li>
+            </ul>
+        </div>
+
+        <div class="darkLight-searchBox">
+            <div class="dark-light">
+                <i class='bx bx-moon moon'></i>
+                <i class='bx bx-sun sun'></i>
+            </div>
+
+            <div class="searchBox">
+               <div class="searchToggle">
+                <i class='bx bx-x cancel'></i>
+                <i class='bx bx-search search'></i>
+               </div>
+
+                <div class="search-field">
+                    <input type="text" placeholder="Search...">
+                    <i class='bx bx-search'></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+
+const body = document.querySelector("body"),
+  nav = document.querySelector("nav"),
+  modeToggle = document.querySelector(".dark-light"),
+  searchToggle = document.querySelector(".searchToggle"),
+  sidebarOpen = document.querySelector(".sidebarOpen"),
+  siderbarClose = document.querySelector(".siderbarClose");
+
+  let getMode = localStorage.getItem("mode");
+      if(getMode && getMode === "dark-mode"){
+        body.classList.add("dark");
+      }
+
+// js code to toggle dark and light mode
+  modeToggle.addEventListener("click" , () =>{
+    modeToggle.classList.toggle("active");
+    body.classList.toggle("dark");
+
+    // js code to keep user selected mode even page refresh or file reopen
+    if(!body.classList.contains("dark")){
+        localStorage.setItem("mode" , "light-mode");
+    }else{
+        localStorage.setItem("mode" , "dark-mode");
+    }
+  });
+
+// js code to toggle search box
+    searchToggle.addEventListener("click" , () =>{
+    searchToggle.classList.toggle("active");
+  });
+
+  
+//   js code to toggle sidebar
+sidebarOpen.addEventListener("click" , () =>{
+nav.classList.add("active");
+});
+
+body.addEventListener("click" , e =>{
+let clickedElm = e.target;
+
+if(!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")){
+    nav.classList.remove("active");
+}
+});
+
+</script>
+<br>
+<br>
+
+  </nav>
+<!--Conteudo Site-->
+<div class="row">
+  <div class="column side1">
+    <h2>Não se preocupe mais</h2>
+<br>
+       <p>O Rio Alerta permite que você saiba de qualquer notícia sobre mudanças climáticas ou desastres naturais.</p>
+<br>
+
+      <p>Tudo na palma da sua mão.</p>
+<br>
+  </div>
+  
+  <div class="column middle">
+    <h2>Tenha as informações na palma da sua mão</h2>
+      <div class="banner1">
+      <img src="../IMAGENS/banner-1.png" alt="">
+    </div>
+  </div>
+  
+  <div class="column side2">
+    <h2>Baixe Agora!</h2>
+      <div class="banner2">
+        <img src="../IMAGENS/banner-2.png" alt="">
+      </div>
+      <p>E receba atualizações à todo momento.</p>
+  </div>
+</div>
+<br>
+<br>
+<!--Footer-->
+<footer>
+  <div class="conteiner-footer">
+    <div class="text-footer">
+      <p>© 2023 Rio Alerta - Rio de Janeiro. DLN - Inovação e Eficiência</p>
+    </div>
+</div>
+
+<script>
+  const closeBtn = document.querySelector(".close-btn");
+
+  closeBtn.addEventListener("click", () => {
+    closeBtn.classList.toggle("open");
+  });
+</script>
+</footer>
+<script src="../php/jquery.js"></script>
+<script src="../php/script.js"></script>
+<script src="../php/html5shiv.js"></script>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>  
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+            crossorigin="anonymous"></script> 
+  
+</body>
+</html>
+
+
